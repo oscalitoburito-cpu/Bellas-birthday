@@ -58,10 +58,9 @@
       {
         id: 'birth2009',
         year: '2009',
-        title: 'Welcome to the World, Bella!',
-        ageLabel: 'Born',
-        description: 'In 2009, a beautiful star was born. From the very first moment you arrived, you filled our lives with endless light, joy, and love. It is absolutely incredible to think that the tiny miracle who changed our family forever is turning 17 today! We are so proud of you.',
-        image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80'
+        title: 'The year it all began!',
+        description: 'In 2009, a beautiful star was born. From the very first moment you arrived, you filled our lives with endless light, joy, and love. It is absolutely incredible to think that the tiny miracle who changed our lives forever is turning 17 today! We are so proud of you. Cheers to another great year ahead!',
+        image: 'https://photos.google.com/search/Cglzbm93Ym9hcmQiCwoJc25vd2JvYXJkKJy+y7znMzgD/photo/AF1QipOeX4YW0gBCdZqv283WpDaPFQp76AoWsGEJzmMB'
       }
     ];
 
@@ -110,9 +109,9 @@
         return saved ? JSON.parse(saved) : {
           artist: 'RÜFÜS DU SOL',
           tour: 'Inhale / Exhale World Tour 2026',
-          date: 'Saturday, August 15, 2026',
-          venue: 'The Riverstage, Brisbane',
-          section: 'VIP Front Lawn',
+          date: 'Thursday, August 13, 2026',
+          venue: 'Kia Forum',
+          section: 'VIP',
           row: 'GA1',
           seat: "Bella's Special Entry",
           notes: 'Includes pre-show soundcheck & backstage gate entry!'
@@ -275,22 +274,20 @@
       }, [revealStarted, isPlaying, revealStage]);
 
       // --- Managing YouTube API and playback controls ---
-      const loadYoutubeVideo = () => {
-        if (ytPlayerRef.current) return;
+      useEffect(() => {
+  if (!window.YT) {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        if (!window.YT) {
-          const tag = document.createElement('script');
-          tag.src = 'https://www.youtube.com/iframe_api';
-          const firstScriptTag = document.getElementsByTagName('script')[0];
-          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-          window.onYouTubeIframeAPIReady = () => {
-            createPlayer();
-          };
-        } else {
-          createPlayer();
-        }
-      };
+    window.onYouTubeIframeAPIReady = () => {
+      createPlayer();
+    };
+  } else {
+    createPlayer();
+  }
+}, []);
 
       const createPlayer = () => {
         ytPlayerRef.current = new window.YT.Player('hidden-yt-player', {
