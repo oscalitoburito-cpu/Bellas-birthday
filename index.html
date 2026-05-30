@@ -456,43 +456,11 @@
               </div>
               <div>
                 <h1 className={`text-sm md:text-base font-bold ${revealStarted ? 'text-purple-300' : 'text-slate-900'}`}>
-                  {nieceName}'s Journey
+                  {nieceName}'s Gift
                 </h1>
                 <p className={`text-[10px] opacity-60 ${revealStarted ? 'text-purple-400' : 'text-slate-500'}`}>Surprise Portal</p>
               </div>
             </div>
-
-            {/* View Mode Switches */}
-            <div className="flex bg-white/70 backdrop-blur-md p-1 rounded-full border border-slate-200/60 shadow-sm">
-              <button
-                onClick={() => {
-                  setMode('preview');
-                  setRevealStarted(false);
-                  setRevealStage(0);
-                  setCurrentSlide(0);
-                  if (ytPlayerRef.current) ytPlayerRef.current.pauseVideo();
-                }}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition ${
-                  mode === 'preview' && !revealStarted ? 'bg-rose-500 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Niece View
-              </button>
-              <button
-                onClick={() => {
-                  setMode('edit');
-                  setRevealStarted(false);
-                  setRevealStage(0);
-                  if (ytPlayerRef.current) ytPlayerRef.current.pauseVideo();
-                }}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition ${
-                  mode === 'edit' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                Edit Card
-              </button>
-            </div>
-          </header>
 
           {/* --- SYSTEM NOTIFICATIONS --- */}
           {showToast && (
@@ -706,13 +674,13 @@
                 <div className="text-center space-y-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-600 text-[10px] font-bold tracking-wider animate-pulse">
                     <SparklesIcon />
-                    BIRTHDAY SURPRISE TIMELINE
+                    Happy 17th!
                   </span>
                   <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-none">
                     Happy Birthday, <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500">{nieceName}</span>!
                   </h1>
                   <p className="text-slate-500 text-xs md:text-sm max-w-md mx-auto leading-relaxed">
-                    Let's celebrate the beautiful story of how you grew up throughout the years! Tap the next button to walk through your memories.
+                    I'll give you one guess to see what's in store for you. 
                   </p>
                 </div>
 
